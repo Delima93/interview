@@ -46,11 +46,12 @@
         // Example:
         if (isset($_POST['bubble_values']) && !empty($_POST['bubble_values'])) {
             echo '<pre>';
-            echo 'Before sort: ';
-            print_r($_POST['bubble_values']);
+            echo '<h3>Before sort: </h3>';
+            print_r(implode(",",$_POST['bubble_values']));
+			
             echo '<br>--------------------<br>';
-            echo 'After sort:' ;
-            print_r(bubbleSort($_POST['bubble_values'])); 
+            echo '<h3>After sort:</h3>' ;
+            print_r(implode(",",bubbleSort($_POST['bubble_values']))); 
             echo '</pre>';
         }
         ?>
