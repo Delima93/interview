@@ -1,0 +1,7 @@
+<?php
+
+$array = array('A','B','C','D','E','B','E');
+$array_1 = array_diff_key($array , array_unique( $array));
+$array_2 = array_shift($array_1);
+
+print_r($array_2);
