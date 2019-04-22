@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form name="form1" id="form1" method="post" action="<?php $_SERVER['PHP_SELF']?>">
+            <h1>Bubble Sort</h1>
+            <label>Value 1&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="bubble_values[]" id="bubble_values1" size="10" maxlength="10"></label><br>
+            <br/><label>Value 2&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="bubble_values[]" id="bubble_values2" size="10" maxlength="10"></label><br>
+            <br/><label>Value 3&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="bubble_values[]" id="bubble_values3" size="10" maxlength="10"></label><br>
+            <br/><label>Value 4&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="bubble_values[]" id="bubble_values4" size="10" maxlength="10"></label><br>
+            <br/><label>Value 5&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="bubble_values[]" id="bubble_values5" size="10" maxlength="10"></label><br>
+            <br/><input type="submit" value="Sort it!" id="bt-submit">
+        </form>
+
+        <h3>Result</h3>
+        <?php
+        function bubbleSort(array $arr)
+        {
+            $n = sizeof($arr);   
+            for ($i = 1; $i < $n; $i++) {
+                $flag = false;
+                for ($j = $n - 1; $j >= $i; $j--) {
+                    if($arr[$j-1] > $arr[$j]) {
+                        $tmp = $arr[$j - 1];
+                        $arr[$j - 1] = $arr[$j];
+                        $arr[$j] = $tmp;
+                        $flag = true;
+                    }
+                }
+                if (!$flag) {
+                    break;
+                }
+            }
+
+            return $arr;
+        }
+
+        // Example:
+        if (isset($_POST['bubble_values']) && !empty($_POST['bubble_values'])) {
+            echo '<pre>';
+            echo 'Before sort: ';
+            print_r($_POST['bubble_values']);
+            echo '<br>--------------------<br>';
+            echo 'After sort:' ;
+            print_r(bubbleSort($_POST['bubble_values'])); 
+            echo '</pre>';
+        }
+        ?>
+    </body>
+</html>
